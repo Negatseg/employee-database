@@ -3,12 +3,17 @@ const mysql = require('mysql2');
 const readline = require('readline');
 const db = require("./db");
 
+const connection = mysql.createConnection({
+  // Your MySQL connection configuration goes here
+});
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-n
 async function runApplication() {
   try {
-    
     const userChoice = await inquirer.prompt({
       type: 'list',
       name: 'action',
@@ -55,13 +60,11 @@ async function runApplication() {
         break;
 
       case 'Exit':
-        
-        connection.release();
+        connection.end();
         process.exit();
         break;
     }
 
-    
   } catch (error) {
     console.error('Error:', error.message);
   } finally {
@@ -69,9 +72,9 @@ async function runApplication() {
   }
 }
 
-
-runApplication();
-
+// function updateEmployeeRole() {
+//   // Implementation of updating employee role
+// }
 
 const updateEmployeeRole = (employeeId, newRoleId) => {
   const query = 'UPDATE employees SET role_id = ? WHERE id = ?';
@@ -115,7 +118,28 @@ function viewAllDepartments(){
   .then(([departments])=>{
     console.log('Departments: ')
     console.table(departments)
-    runApplication()
+    //runApplication()
   })
 }
 
+function viewAllRoles(){
+  console.log('Check')
+  db.findRoles()
+  .then(([departments])=>{
+    console.log('Roles: ')
+    console.table(roles)
+    //runApplication()
+  })
+}
+
+
+function viewAllEmployees(){
+  console.log('Check')
+  db.findEmployees()
+  .then(([departments])=>{
+    console.log('Employees: ')
+    console.table(employees)
+    //runApplication()
+  })
+}
+runApplication();
