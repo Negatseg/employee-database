@@ -14,7 +14,7 @@ class DB{
     return this.connection.promise().query('SELECT * FROM roles');
   }
   findEmployees(){
-    return this.connection.promise().query('SELECT * FROM employeess');
+    return this.connection.promise().query('SELECT * FROM employee');
   }
 }
 
