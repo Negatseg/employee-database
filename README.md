@@ -22,3 +22,7 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
 Website sample screenshot:
+
+
+![image](https://github.com/Negatseg/employee-database/assets/81937460/1323829f-9867-434c-8fd9-637fbe0de985)
+
